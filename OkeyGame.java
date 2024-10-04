@@ -18,7 +18,7 @@ public class OkeyGame {
         tiles = new Tile[112];
         int currentTile = 0;
 
-        // two copies of each color-value combination, no jokers
+        // four copies of each color-value combination, no jokers
         for (int i = 1; i <= 7; i++) {
             for (int j = 0; j < 4; j++) {
                 tiles[currentTile++] = new Tile(i,'Y');
@@ -30,12 +30,22 @@ public class OkeyGame {
     }
 
     /*
-     * TODO: distributes the starting tiles to the players
+     * Distributes the starting tiles to the players
      * player at index 0 gets 15 tiles and starts first
      * other players get 14 tiles
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
+
+        for(int i = 0; i < 4; i++){
+
+            for(int j = 0; j < 14; j++){
+
+                players[i].getAndRemoveTile(j);
+            }
+        }
+
+        players[0].getAndRemoveTile(14);//First player will have extra one tile
 
     }
 

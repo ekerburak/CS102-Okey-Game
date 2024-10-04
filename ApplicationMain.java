@@ -78,8 +78,12 @@ public class ApplicationMain {
                     System.out.print("Discard the tile in index: ");
                     playerChoice = sc.nextInt();
 
-                    // TODO: make sure the given index is correct, should be 0 <= index <= 14
+                while(playerChoice>14){
 
+                    System.out.println("You entered invalid index. Please enter a number between 0-14 (inclusive).");
+                    playerChoice = sc.nextInt();
+                }
+                
                     game.discardTile(playerChoice);
                     game.passTurnToNextPlayer();
                 }
