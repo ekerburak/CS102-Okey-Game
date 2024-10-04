@@ -1,7 +1,10 @@
+import java.util.Random;
+
 public class OkeyGame {
 
     Player[] players;
     Tile[] tiles;
+    private static final Random RNG = new Random();
 
     Tile lastDiscardedTile;
 
@@ -54,18 +57,19 @@ public class OkeyGame {
         return null;
     }
 
-    /*
-     * TODO: should randomly shuffle the tiles array before game starts
-     */
     public void shuffleTiles() {
-
+        for(int i = 0; i < tiles.length; i++) {
+            Tile tmp = tiles[i];
+            int j = RNG.nextInt(tiles.length);
+            tiles[i] = tiles[j];
+            tiles[j] = tmp;    
+        }
     }
 
-    /*
-     * TODO: check if game still continues, should return true if current player
-     * finished the game, use isWinningHand() method of Player to decide
-     */
     public boolean didGameFinish() {
+        if (players[currentPlayerIndex].isWinningHand()) {
+            return true;
+        }
         return false;
     }
 
