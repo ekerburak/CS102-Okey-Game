@@ -55,7 +55,12 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile() {
-        return null;
+        
+        String pickedTile = lastDiscardedTile.toString();
+
+        players[currentPlayerIndex].addTile(lastDiscardedTile);
+        
+        return pickedTile;
     }
 
     /*
@@ -64,6 +69,19 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() {
+        int numberOfTiles = players[currentPlayerIndex].getTiles().length;
+         
+        if(numberOfTiles >0 ){
+        
+            Tile topTile = tiles[tiles.length - 1];
+            tiles[tiles.length - 1] = null;
+            String topTileStr = topTile.toString();
+
+            players[currentPlayerIndex].addTile(topTile);
+            return topTileStr;
+
+        } 
+             
         return null;
     }
 

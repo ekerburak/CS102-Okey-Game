@@ -10,7 +10,7 @@ public class Player {
     }
 
     /*
-     * TODO: removes and returns the tile in given index
+     * 
      */
     public Tile getAndRemoveTile(int index) {
         Tile removedTile = playerTiles[index];
